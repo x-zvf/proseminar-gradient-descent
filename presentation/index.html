@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Gradient Descent</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<style>
+		.fragment.delete.visible {
+			display: none;
+		}
+
+		.side-by-side {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h2>
+					Gradient Descent Explained
+				</h2>
+				<p class="fragment strike">Proseminar</p>
+				<p>Péter Bohner, 05.07.2023</p>
+			</section>
+			<section>
+				<p>A lot of problems can be expressed as</p>
+				<div class="fragment fade-in">
+
+					<div class="fragment shrink">
+						\[g\left(\begin{bmatrix}
+						x_{1} \\
+						x_{2} \\
+						\vdots \\
+						x_{n}
+						\end{bmatrix}\right) = \begin{bmatrix}
+						x_{1} \\
+						x_{2} \\
+						\vdots \\
+						x_{m}
+						\end{bmatrix}\]
+					</div>
+				</div>
+				<div class="fragment fade-up">
+					<div class="fragment fade-out delete">
+						\[f\left(\overrightarrow{x}\right) = y\]
+					</div>
+				</div>
+				<div class="fragment fade-in">
+					\[f\left(\overrightarrow{x}\right) = |g\left(\overrightarrow{x}\right) |\]
+				</div>
+				<div class="fragment fade-left">Goal: Minimize $f\left(\overrightarrow{x}\right)$
+				</div>
+			</section>
+			<section>
+				<h3>Approaches</h3>
+				<ul>
+					<li class="fragment fade-in">
+						<p class="fragment strike">
+							Solve analytically
+						</p>
+						<p class="fragment fade-in">
+							Not possible for most problems
+						</p>
+					</li>
+					<li class="fragment fade-up">
+						<p class="fragment strike">
+							Brute force
+						</p>
+						<p class="fragment fade-in">
+							Exponential time complexity
+						</p>
+					</li>
+					<li class="fragment fade-up">
+						<p class="fragment">
+							Iterative Descent Methods
+						</p>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<p>Basic algorithm</p>
+					<div class="fragment fade-up">
+
+						<pre><code data-trim data-noescape data-line-numbers="|1-2|3,7|4|5|6">
+							x := random_point_in(D)
+							Δx
+							do
+							Δx := descent_direction(x)
+							t := step_size(x, Δx)
+							x := x + tΔx
+							while |Δx| > η
+						</code></pre>
+					</div>
+				</section>
+
+
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/b3d159fe67fa0f5b6cd1b9af60ed48196f54ca70f53d4398d78c13827bc5dc29.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/df22ffbe6f33e94a8f77f34b3ed82c7fd9164887933de668d4635ba795beeec5.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/d9b18c0a9e47a87e04adccc448cbe54ead9e55a23a7b4d3d7d2461fef5ca5e84.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/229e2ef3f0c2a8bc1e71347349eece8e631b036947cb8a486913c1c5b836d7d5.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/5257b6e0c6124ff8c3b98d9823b992b41b072926a881d98c95bc013f486d157b.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/ab9e9b1c12a2e8f6d708ca2f7182dcc11cc9caa1841ec2a294bbde1f0dbb1836.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/dda0caf4b7e4145f2af0c3397c5cb83d3fa8660d0dbba5c18126cb099643fd75.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/2ff9a62a13254754d933e59d210e359c743380ba94f444f0f20b99b6b4d3c1fc.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/a9c6ef042d79a200df580790a749f5aeb61dfb050095c0679425a23f2281b945.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/9df25afc1227e9044cc39e290ae3fb6b558d5d72307dad93083d0317ff2dcbbb.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="basic_assets/3931933789_4184162716_1578913003.mp4"
+					data-background-video-muted></section>
+
+			</section>
+			<section>
+				<ul>
+					<li class="fragment fade-left">iterative</li>
+					<li class="fragment fade-left">Need not compute derivative of $f$</li>
+					<li class="fragment fade-left">Not guaranteed to give global minimum</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Descent Direction</h3>
+				<p class="fragment fade-left">We want to descend as quickly as possible</p>
+				<p class="fragment fade-up">$\rightarrow$ direction of steepest descent</p>
+				<p class="fragment fade-up">$\rightarrow$ negative gradient $-∇f(x)$</p>
+				<!-- <p class="fragment fade-in">(assuming $f(x)$ is differentiable)</p> -->
+			</section>
+			<section>
+				<section>
+					<h3>Assumptions (for now)</h3>
+					<ul>
+						<li class="fragment fade-left">$f(x)$ is differentiable</li>
+						<li class="fragment fade-left">f is convex (for convergence)</li>
+					</ul>
+				</section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="convex_concave_assets/3218168d7103ed3bdf5b0433cc1e1f3b79ca988c5b2ab04245e6895fb86bf012.mp4"
+					data-background-video-muted></section>
+				<section data-background-size='contain' data-visibility="uncounted"
+					data-background-video="convex_concave_assets/265cb8401b110b35326dac090da87af60778081491af934b7f7c2e0dde132d3c.mp4"
+					data-background-video-muted></section>
+			</section>
+			<section>
+				<h3>Why the gradient?</h3>
+				<p class="fragment fade-left">$x_0 \in D$, where $f$ differentiable: $a\in R^n, |a| = 1$</p>
+				<p class="fragment fade-left">$\frac{\delta f}{\delta a}(x_0) = ∇_af(x_0) = a \cdot ∇f(x_0)$</p>
+				<p class="fragment fade-left">$|a \cdot ∇f(x_0)| \leq |a| \cdot |∇f(x_0)| = |∇f(x_0)|$</p>
+				<p class="fragment fade-left">$a=\frac{∇f(x_0)}{|∇f(x_0)|} : |∇_af(x_0)| = |∇f(x_0)|$</p>
+				<p class="fragment fade-left">$\rightarrow$ The gradient is the direction of steepest ascent</p>
+			</section>
+			<!-- <section>
+				<h3>Taylor Series</h3>
+				$\sum _{n=0}^{\infty }{\frac {f^{(n)}(x_0)}{n!}}(x-x_0)^{n} = f(x_0)(x-x_0) + ∇$
+			</section> -->
+			<section>
+				<h3>Determining the step size - exact line search</h3>
+				<p class="fragment fade-left">$t = argmin_{s\geq 0}f(x+s\Delta x)$</p>
+				<p class="fragment fade-left">Cost of minimizing $t$ $\ll$ computing $\Delta x$</p>
+				<p class="fragment fade-left">useful if: efficient precomputation | analytical solution</p>
+			</section>
+			<section>
+				<h3>Backtracking Line Search</h3>
+				<p class="fragment fade-left">Given $\Delta x\in D, \alpha \in (0;0.5), \beta \in (0;1)$</p>
+				<p class="fragment fade-up">Start with $t=1$</p>
+				<p class="fragment fade-up">while $f(x+t\Delta x) > f(x) + \alpha ∇f(x)^T\Delta x: t:= \beta t$</p>
+				<p class="fragment fade-up">$\rightarrow$ reduce $t$ iteratively, until it is not worse than linear
+					approximation</p>
+			</section>
+
+			<section>
+				<h3>Putting it together</h3>
+				<div class="fragment fade-up">
+					<pre><code data-trim data-noescape data-line-numbers="|1|2|3,7|4|5|6">
+						Δx := 0
+						x := random_point_in(D)
+						do
+							Δx := -∇f(x)
+							t := line_search(x, Δx)
+							x := x + tΔx
+						while |Δx| > η
+				</code></pre>
+				</div>
+			</section>
+			<section>
+				<img src="assets/grad-descent-ex.png" alt="" class="fragment fade-left">
+				<p class="fragment fade-down">... Gradient Descent is not fast</p>
+			</section>
+			<section>
+				<h3>Convergence of Gradient Descent: Experiments</h3>
+				<ul>
+					<li class="fragment fade-left">Tweaking backtracking parameters provides a small effect</li>
+					<li class="fragment fade-left">exact line search is better, but probably seldom worth the complexity
+					</li>
+					<li class="fragment fade-left">approximately linear convergence $O(1/k)$</li>
+					<li class="fragment fade-left">Convergence depends on condition number of Hessian</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Improving Gradient Descent with Momentum</h3>
+				<p class="fragment fade-left">analogy a ball rolling down a hill</p>
+				<div class="fragment fade-up">
+					<pre><code data-trim data-noescape data-line-numbers="|1|2|3,4,8|6|7|">
+						parameters t,m
+						Δx, v := 0, 0
+						x := random_point_in(D)
+						do
+							Δx := -∇f(x)
+							v := tΔx + mv
+							x := x + v
+						while |Δx| > η
+				</code></pre>
+				</div>
+				<p class="fragment fade-down">Problem: tendency overshoot minima</p>
+			</section>
+			<section>
+				<h3>Nesterov Momentum</h3>
+				<p class="fragment fade-left">Move the momentum term one iteration ahead</p>
+				<div class="fragment fade-down">
+					<pre><code data-trim data-noescape data-line-numbers="|5|6|7,8|">
+						parameters t,m
+						Δx, v := 0, 0
+						x := random_point_in(D)
+						do
+							p = x + mv
+							Δx := -∇f(p)
+							v := tΔx + mv
+							x := x + v
+						while |Δx| > η
+				</code></pre>
+				</div>
+				<p class="fragment fade-up">Optimal convergence $O(1/k^2)$ for convex, lipschitz $f$</p>
+			</section>
+			<section>
+				<h3>Assumptions</h3>
+				<p class="fragment fade-left">subgradient method $\rightarrow$ differentiability not required</p>
+				<p class="fragment fade-left">$f$ convex only required for $O(1/k^2)$ convergence</p>
+			</section>
+
+			<section>
+				<h3>Questions</h3>
+			</section>
+			<section>
+				<h3>Sources</h3>
+				<ul>
+					<li>Nesterov,"Lectures on Convex Optimization", 2018, 10.1007/978-3-319-91578-4 </li>
+					<li>Boyd and Vandenberghe,"Convex Optimization", 2014</li>
+					<li>Shalev-Shwartz, S. and Ben-David, S. (2014). Understanding Machine Learning: From Theory to
+						Algorithms, doi:10.1017/CBO9781107298019.015</li>
+					<li><a
+							href="https://www.damtp.cam.ac.uk/user/hf323/M19-OPT/index.html">https://www.damtp.cam.ac.uk/user/hf323/M19-OPT/index.html</a>
+					</li>
+					<li><a
+							href="https://machinelearningmastery.com/gradient-descent-with-nesterov-momentum-from-scratch/">https://machinelearningmastery.com/gradient-descent-with-nesterov-momentum-from-scratch/</a>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<script src="plugin/highlight/highlight.js"></script>
+	<script src="plugin/math/math.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMath.KaTeX, RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
